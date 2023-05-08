@@ -6,7 +6,6 @@ import (
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/androidpublisher/v3"
 	"google.golang.org/api/option"
-	"io"
 	"net/http"
 	"os"
 )
@@ -71,18 +70,11 @@ func New(jsonKey []byte, opts ...Option) (*Client, error) {
 	}, nil
 }
 
-func NewWithJSONFile(jsonFile string, opts ...Option) (*Client, error) {
-	file, err := os.Open(jsonFile)
+func NewWithJSONFile(filename string, opts ...Option) (*Client, error) {
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
-
-	data, err := io.ReadAll(file)
-	if err != nil {
-		return nil, err
-	}
-
 	return New(data, opts...)
 }
 
