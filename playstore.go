@@ -70,7 +70,7 @@ func New(jsonKey []byte, opts ...Option) (*Client, error) {
 	}, nil
 }
 
-func NewWithJSONFile(filename string, opts ...Option) (*Client, error) {
+func NewWithJSONKeyFile(filename string, opts ...Option) (*Client, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
