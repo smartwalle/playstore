@@ -98,9 +98,9 @@ func (this *Client) VerifyProduct(ctx context.Context, packageName, productId, t
 	return this.products.Get(packageName, productId, token).Context(ctx).Do()
 }
 
-func (this *Client) AcknowledgeProduct(ctx context.Context, packageName, productID, token, developerPayload string) error {
+func (this *Client) AcknowledgeProduct(ctx context.Context, packageName, productId, token, developerPayload string) error {
 	var param = &androidpublisher.ProductPurchasesAcknowledgeRequest{DeveloperPayload: developerPayload}
-	return this.products.Acknowledge(packageName, productID, token, param).Context(ctx).Do()
+	return this.products.Acknowledge(packageName, productId, token, param).Context(ctx).Do()
 }
 
 func (this *Client) ConsumeProduct(ctx context.Context, packageName, productId, token string) error {
